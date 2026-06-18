@@ -32,5 +32,5 @@ Route::get('/admin', function () {
         return 'Administrador não encontrado.';
     }
 
-    dd($admin->toArray());
+    return view('admin', ['admin' => $admin]);
 });
