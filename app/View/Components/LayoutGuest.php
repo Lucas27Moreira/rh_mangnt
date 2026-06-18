@@ -11,6 +11,7 @@ class LaoutGuest extends Component
     /**
      * Create a new component instance.
      */
+    public $pageTitle;
     public function __construct($pageTitle = null)
     {
         $this->pageTitle = $pageTitle;
