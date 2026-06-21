@@ -14,11 +14,17 @@
     <div class="d-flex align-items-center">
         <i class="fas fa-user-circle me-3"></i>
         <a href="#" class="text-primary me-3">
-            [USERNAME]
+            {{ auth()->user()->name }}
         </a>
-        <a href="#" class="btn btn-sm btn-danger">
-            <i class="fas fa-sign-out-alt"></i>
-        </a>
+
+        {{-- logout --}}
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-sm btn-danger">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </form>
+       
     </div>
 
 </div>
