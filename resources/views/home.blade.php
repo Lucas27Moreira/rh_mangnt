@@ -1,5 +1,7 @@
-<x-layout.app pageTitle="Home">
-    <div class="container mt-5">
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the home page of the application.</p>
-    </div>
+<x-layout-app pageTitle="Home">
+    <h1 class="text-center">DENTRO DO HOME</h1>
+
+    @php 
+    dump(auth()->user());
+    @endphp
+</x-layout-app>
