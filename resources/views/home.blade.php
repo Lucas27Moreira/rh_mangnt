@@ -1,5 +1,6 @@
 <x-layout-app pageTitle="Home">
-    <h1 class="text-center my-5">DENTRO DO HOME</h1>
-
+   @can('admin')
+    <p>Você é um administrador. logado</p>
+   @endcan
    
 </x-layout-app>
