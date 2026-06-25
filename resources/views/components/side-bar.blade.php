@@ -10,7 +10,7 @@
 
 
 
-    <a href="#"><i class="fa-solid fa-cog me-3"></i>User profile</a>
+    <a href="{{ route('user.profile')}}"><i class="fa-solid fa-cog me-3"></i>User profile</a>
     <hr>
      
     {{-- logout --}}
