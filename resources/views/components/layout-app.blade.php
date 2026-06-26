@@ -22,9 +22,7 @@
     <div class="layout-wrapper">
         <!-- side bar -->
         <x-side-bar />
-        <div class="main-content p-4">
             {{ $slot }}
-        </div>
     </div>
 
     <!-- resources -->

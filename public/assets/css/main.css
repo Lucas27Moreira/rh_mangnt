@@ -17,7 +17,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 180px;
-    min-width: 180px;
+    min-width: 250px;
     background-color: #ffffff;
     padding: 20px 10px;
     min-height: calc(100vh - 60px);
