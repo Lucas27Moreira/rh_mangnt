@@ -19,13 +19,13 @@
 
     <!-- user bar -->
     <x-user-bar />
-<div class="d-flex" pt-2>
-    <!-- side bar -->
-    <x-side-bar />
-    <div class="m-3 p-3">
-        {{ $slot }}
+    <div class="layout-wrapper">
+        <!-- side bar -->
+        <x-side-bar />
+        <div class="main-content p-4">
+            {{ $slot }}
+        </div>
     </div>
-</div>
 
     <!-- resources -->
      <script src="{{ asset('assets/datatables/jquery.min.js') }}"></script>
