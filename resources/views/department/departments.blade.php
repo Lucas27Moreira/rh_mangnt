@@ -2,11 +2,14 @@
     <div class="w-100 p-4">
         <h3>Departments</h3>
         <hr>
-        <div class="text-center my-5">
+
+        @if($departments->count() === 0)
+
+         <div class="text-center my-5">
             <p>No departments found.</p>
             <a href="#" class="btn btn-primary">Create a new department</a>
         </div>
-        <hr>
+        @else
         <div class="mb-3">
             <a href="#" class="btn btn-primary">Create a new department</a>
         </div>
@@ -27,5 +30,6 @@
                 </tr>
             </tbody>
         </table>
+        @endif
     </div>
 </x-layout-app>
