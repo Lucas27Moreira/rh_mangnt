@@ -52,4 +52,27 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
         return view('department.edit-department', compact('department'));
      }
+
+     public function updateDepartment(Request $request, $id)
+     {
+        Auth::user()->can('admin')? :abort(403,'You are not authorized to access this page');
+
+        //check if id  === 1
+
+        if($id === 1){
+            return redirect()->route('departments');
+        }
+
+        // form validation
+        $request->validate([
+            'name'=>'required|string|max:50|unique:departments,name,'.$id
+        ]);
+
+        $department = Department::findOrFail($id);
+        $department->update([
+            'name'=> $request->name
+        ]);
+
+        return redirect()->route('departments');
+     }
 }
