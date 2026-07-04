@@ -20,5 +20,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('departments/edit-department/{id}',[DepartmentController::class,'editDepartment'])->name('departments.edit-department');
     Route::post('departments/update-department',[DepartmentController::class,'updateDepartment'])->name('departments.update-department');
+
+    Route::post('departments/delete-department/{id}',[DepartmentController::class,'deleteDepartment'])->name('departments.delete-department');
+     Route::post('departments/delete-department-confirm/{id}',[DepartmentController::class,'deleteDepartmentConfirm'])->name('departments.delete-department-confirm');
+
 });
    

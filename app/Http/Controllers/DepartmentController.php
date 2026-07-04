@@ -92,6 +92,6 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
        
 
-        return view('department.delete-department', compact('department'));
+        return view('department.delete-department-confirm', compact('department'));
      }
 }
