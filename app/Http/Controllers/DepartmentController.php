@@ -78,4 +78,20 @@ class DepartmentController extends Controller
 
         return redirect()->route('departments');
      }
+
+     public function deleteDepartment($id)
+     {
+        Auth::user()->can('admin')? :abort(403,'You are not authorized to access this page');
+
+        //check if id  === 1
+
+        if(intval($id) === 1){
+            return redirect()->route('departments');
+        }
+
+        $department = Department::findOrFail($id);
+       
+
+        return view('department.delete-department', compact('department'));
+     }
 }
