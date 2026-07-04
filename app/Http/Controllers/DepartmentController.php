@@ -94,4 +94,20 @@ class DepartmentController extends Controller
 
         return view('department.delete-department-confirm', compact('department'));
      }
+
+        public function deleteDepartmentConfirm($id)
+        {
+            Auth::user()->can('admin')? :abort(403,'You are not authorized to access this page');
+    
+            //check if id  === 1
+    
+            if(intval($id) === 1){
+                return redirect()->route('departments');
+            }
+    
+            $department = Department::findOrFail($id);
+            $department->delete();
+    
+            return redirect()->route('departments');
+        }
 }
