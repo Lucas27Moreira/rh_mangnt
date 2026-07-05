@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\RhUserController;
 
 Route::middleware('auth')->group(function () {
    Route::redirect('/', '/home');
@@ -24,5 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('departments/delete-department/{id}',[DepartmentController::class,'deleteDepartment'])->name('departments.delete-department');
     Route::post('departments/delete-department-confirm/{id}',[DepartmentController::class,'deleteDepartmentConfirm'])->name('departments.delete-department-confirm');
 
+      //rh colaborators route
+    Route::get('/rh-users',[RhUserController::class, "index"])->name('colaborators.rh-users');
 });
    
