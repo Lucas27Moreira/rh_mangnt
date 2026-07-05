@@ -18,11 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::get('departments/new-department',[DepartmentController::class,'newDepartment'])->name('departments.new-department');
     Route::post('departments/create-department',[DepartmentController::class,'createDepartment'])->name('departments.create-department');
 
-    Route::post('departments/edit-department/{id}',[DepartmentController::class,'editDepartment'])->name('departments.edit-department');
+    Route::get('departments/edit-department/{id}',[DepartmentController::class,'editDepartment'])->name('departments.edit-department');
     Route::post('departments/update-department',[DepartmentController::class,'updateDepartment'])->name('departments.update-department');
 
-    Route::post('departments/delete-department/{id}',[DepartmentController::class,'deleteDepartment'])->name('departments.delete-department');
-     Route::post('departments/delete-department-confirm/{id}',[DepartmentController::class,'deleteDepartmentConfirm'])->name('departments.delete-department-confirm');
+    Route::get('departments/delete-department/{id}',[DepartmentController::class,'deleteDepartment'])->name('departments.delete-department');
+    Route::post('departments/delete-department-confirm/{id}',[DepartmentController::class,'deleteDepartmentConfirm'])->name('departments.delete-department-confirm');
 
 });
    
