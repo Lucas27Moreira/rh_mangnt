@@ -22,6 +22,7 @@
                             @enderror
                         </div>
 
+                     
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
@@ -29,6 +30,17 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
+                           <div class="mb-3">
+                          <label for="select_department" class="form-label">Department</label>
+                          <select class="form-select" id="department" name="department" required>
+                            <option value="">Select a department</option>
+                            @foreach ($departments as $department)
+                              <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
+                          </select>
+                        </div>
+
 
                         <p class="mb-3">Profile: <strong>Human Resources</strong></p>
 
