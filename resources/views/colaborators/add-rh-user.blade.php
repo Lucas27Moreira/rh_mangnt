@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <h3>New Human Resources Colaboratos</h3>
+                    <h3>New Human Resources Colaborator</h3>
                     <hr>
                     <form action="#" method="post">
                         @csrf
