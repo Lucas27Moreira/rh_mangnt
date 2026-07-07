@@ -28,12 +28,8 @@
                 <tr>
                     <td>{{$colaborator->name}}</td>
                     <td>{{$colaborator->email}}</td>
-
-                    @php
-                        $permissions = json_decode($colaborator->permissions) ?? [];
-                    @endphp
                    
-                   <td>{{ count($permissions) > 0 ? implode(', ', $permissions) : '—' }}</td>
+                   <td>{{ ucfirst($colaborator->role) }}</td>
                     <td>
                         <div class="d-flex gap-3 justify-content-end">
                             @if($colaborator->id === 1)
