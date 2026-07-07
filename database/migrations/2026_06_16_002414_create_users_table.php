@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role',50);
-            $table->string('permissions',1000);
+            $table->string('permissions',1000)->default('');
             $table->timestamps();
             $table->softDeletes();
         });

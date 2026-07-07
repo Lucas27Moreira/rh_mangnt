@@ -30,10 +30,10 @@
                     <td>{{$colaborator->email}}</td>
 
                     @php
-                        $permissions = json_decode($colaborator->permissions);
+                        $permissions = json_decode($colaborator->permissions) ?? [];
                     @endphp
                    
-                   <td>{{implode($permissions, ', ')}}</td>
+                   <td>{{ count($permissions) > 0 ? implode(', ', $permissions) : '—' }}</td>
                     <td>
                         <div class="d-flex gap-3 justify-content-end">
                             @if($colaborator->id === 1)

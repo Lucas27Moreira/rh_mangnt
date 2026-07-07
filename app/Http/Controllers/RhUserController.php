@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Department;
 
 class RhUserController extends Controller
@@ -36,15 +37,16 @@ class RhUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'selected_department' => 'required|exists:departments,id',
+            'department' => 'required|exists:departments,id',
         ]);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role = 'rh';
-        $user->department_id = $request->selected_department;
-        $user->department_id = '["rh"]';
+        $user->password = Hash::make('password123');
+        $user->department_id = $request->department;
+        $user->permissions = '';
         $user->save();
 
         return redirect()->route('colaborators.rh-users')->with('success', 'Colaborator created successfully.');
