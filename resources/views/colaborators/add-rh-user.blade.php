@@ -6,7 +6,7 @@
 
         <hr>
 
-        <form action="{{ route('colaborators.create_colaborator') }}" method="post">
+        <form action="{{ route('colaborators.new-colaborator') }}" method="post">
 
             @csrf
 
@@ -46,7 +46,7 @@
                                     @enderror
                                 </div>
                                 <div>
-                                    <a href="{{ route('departments.new_department') }}"
+                                    <a href="{{ route('departments.new-department') }}"
                                         class="btn btn-outline-primary mt-4"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <a href="{{ route('colaborators.rh_users') }}" class="btn btn-outline-danger me-3">Cancel</a>
+                    <a href="{{ route('colaborators.rh-users') }}" class="btn btn-outline-danger me-3">Cancel</a>
                     <button type="submit" class="btn btn-primary">Create colaborator</button>
                 </div>
 
