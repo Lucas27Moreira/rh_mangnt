@@ -40,7 +40,7 @@ class RhUserController extends Controller
             'select_department' => 'required|exists:departments,id',
             'address' => 'required|string|max:255',
             'zip_code' => 'required|string|max:10',
-            'city' => 'required|string|max:255',
+            'city' => 'required|string|max:50',
             'phone' => 'required|string|max:50',
             'salary' => 'required|decimal:2',
             'admission_date' => 'required|date_format:Y-m-d',
