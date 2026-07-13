@@ -54,8 +54,8 @@ class RhUserController extends Controller
         $user->permissions = '["rh"]';
         $user->save();
 
-        // save user details 
-        $user->detail()->create([
+        // save user details
+        $user->userDetail()->create([
             'address' => $request->address,
             'zip_code' => $request->zip_code,
             'city' => $request->city,
