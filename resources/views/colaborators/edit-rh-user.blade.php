@@ -9,6 +9,12 @@
         <form action="{{ route('colaborators.update-colaborator', ['id' => $colaborator->id]) }}" method="post">
 
             @csrf
+
+            <div class="d-flex gap-3">
+                <p>Colaborator: <strong>{{ $colaborator->name }}</strong></p>
+                <p>Email: <strong>{{ $colaborator->email }}</strong></p>
+            </div>
+
           <input type="hidden" name="user_id" value="{{ $colaborator->id }}">
 
             <div class="container-fluid">
