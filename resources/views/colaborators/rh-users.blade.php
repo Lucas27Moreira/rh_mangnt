@@ -21,7 +21,6 @@
                 <th>Permissions</th>
                 <th>Admission Date</th>
                 <th>City</th>
-                <th>Salary</th>
                 <th></th>
             </thead>
             <tbody>
@@ -34,10 +33,9 @@
                     <td>{{$colaborator->name}}</td>
                     <td>{{$colaborator->email}}</td>
                     <td>{{$colaborator->role}}</td>
-                    <td>{{implode(', ', $permissions)}}</td>
+                  <td>{{$colaborator->userDetail->salary}} $</td>
                     <td>{{$colaborator->userDetail->admission_date}}</td>
                     <td>{{$colaborator->userDetail->city}}</td>
-                    <td>{{$colaborator->userDetail->salary}}</td>
                     <td>
                         <div class="d-flex gap-3 justify-content-end">
                             <a href="{{ route('colaborators.edit-colaborator', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
