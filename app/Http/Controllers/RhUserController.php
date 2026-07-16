@@ -86,8 +86,7 @@ class RhUserController extends Controller
         Auth::user()->can('admin')?: abort(403, 'You are not authorized to access this page');
 
         $colaborator = User::with('detail')->where('role', 'rh')->findOrFail($id);
-        $departments = Department::all();
 
-        return view('colaborators.edit-rh-user', compact('colaborator', 'departments'));
+        return view('colaborators.edit-rh-user', compact('colaborator'));
     }
 }
