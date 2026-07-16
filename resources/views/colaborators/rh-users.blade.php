@@ -21,31 +21,30 @@
                 <th>Permissions</th>
                 <th>Admission Date</th>
                 <th>City</th>
+                <th>Salary</th>
                 <th></th>
             </thead>
             <tbody>
 
                 @foreach ($colaborators as $colaborator)
+                @php
+                    $permissions = json_decode($colaborator->permissions); 
+                @endphp
                 <tr>
                     <td>{{$colaborator->name}}</td>
                     <td>{{$colaborator->email}}</td>
                     <td>{{$colaborator->role}}</td>
-                 
-                   @php
-                      $permissions = json_decode($colaborator->permissions); 
-                   @endphp
+                    <td>{{implode(', ', $permissions)}}</td>
+                    <td>{{$colaborator->userDetail->admission_date}}</td>
+                    <td>{{$colaborator->userDetail->city}}</td>
+                    <td>{{$colaborator->userDetail->salary}}</td>
+                    <td>
+                        <div class="d-flex gap-3 justify-content-end">
+                            <a href="{{ route('colaborators.edit-colaborator', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
+                            <a href="#" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-trash-can me-2"></i>Delete</a>
+                        </div>
+                    </td>
                 </tr>
-
-                <td>{{implode(', ', $permissions)}}</td>
-                <td>{{$colaborator->detail->admission_date}}</td>
-                <td>{{$colaborator->detail->city}}</td>
-
-                <td>
-                    <div class="d-flex gap-3 justify-content-end">
-                        <a href="{{ route('colaborators.edit-colaborator', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
-                        <a href="#" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-trash-can me-2"></i>Delete</a>
-                    </div>
-                </td>
                 @endforeach
             </tbody>
         </table>

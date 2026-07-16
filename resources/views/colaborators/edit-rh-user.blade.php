@@ -21,7 +21,7 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="salary" class="form-label">salary</label>
-                                <input type="number" class="form-control" id="salary" name="salary" step=".01" placeholder="0,00" value="{{ old('salary', $colaborator->detail->salary) }}">
+                                <input type="number" class="form-control" id="salary" name="salary" step=".01" placeholder="0,00" value="{{ old('salary', $colaborator->userDetail->salary) }}">
                                 @error('salary')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -30,7 +30,7 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="admission_date" class="form-label">Admission Date</label>
-                                <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="YYYY-mm-dd" value="{{ old('admission_date', $colaborator->detail->admission_date) }}">
+                                <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="YYYY-mm-dd" value="{{ old('admission_date', $colaborator->userDetail->admission_date) }}">
                                 @error('admission_date')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
