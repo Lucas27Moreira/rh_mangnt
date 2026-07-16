@@ -80,4 +80,14 @@ class RhUserController extends Controller
 
         return redirect()->route('colaborators.rh-users')->with('success', 'Colaborator created successfully.');
     }
+
+    public function editRhColaborator($id)
+    {
+        Auth::user()->can('admin')?: abort(403, 'You are not authorized to access this page');
+
+        $colaborator = User::with('detail')->where('role', 'rh')->findOrFail($id);
+        $departments = Department::all();
+
+        return view('colaborators.edit-rh-user', compact('colaborator', 'departments'));
+    }
 }
