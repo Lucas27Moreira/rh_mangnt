@@ -14,12 +14,14 @@ class ConfirmAccountEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public string $url;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct( $url)
     {
-        //
+        $this->url = $url;
     }
 
     /**
@@ -28,7 +30,8 @@ class ConfirmAccountEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirm Account Email',
+            from: env('MAIL_FROM_ADDRESS'),
+            subject: env('APP_NAME') . ' - Confirm Account Email',
         );
     }
 
@@ -38,7 +41,7 @@ class ConfirmAccountEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.confirm-account-email',
         );
     }
 
