@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Department;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmAccountEmail;
 
 class RhUserController extends Controller
 {
@@ -51,9 +54,12 @@ class RhUserController extends Controller
            return redirect()->route('home');
         }
 
+        $token = Str::random(60);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->confirmation_token = $token;
         $user->role = 'rh';
         $user->department_id = $request->select_department;
         $user->permissions = '["rh"]';
@@ -69,6 +75,8 @@ class RhUserController extends Controller
             'admission_date' => $request->admission_date,
         ]);
 
+        // send confirmation email
+        Mail::to($user->email)->send(new ConfirmAccountEmail(route('confirm-account',  $token)));
 
 
         // $user->password = Hash::make('password123');

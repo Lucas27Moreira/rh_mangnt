@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ConfirmAccountController extends Controller
 {
-    public function confirmAccount($url)
+    public function confirmAccount($token)
     {
-        echo "Confirming account with URL: " . $url;
+        echo "Confirming account with token: " . $token;
     }
 }
