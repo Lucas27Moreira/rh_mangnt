@@ -6,6 +6,10 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\RhUserController;
 use App\Http\Controllers\ConfirmAccountController;
 
+route::middleware('guest')->group(function () {
+   //confirm account route
+    Route::get('/confirm-account/{token}', [ConfirmAccountController::class, 'confirmAccount'])->name('confirm-account');
+});
 Route::middleware('auth')->group(function () {
    Route::redirect('/', '/home');
    Route::view('/home', 'home')->name('home');
@@ -35,8 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/delete-colaborator/{id}',[RhUserController::class, "deleteRhColaborator"])->name('colaborators.rh.delete-colaborator');
     Route::post('/rh-users/delete-colaborator-confirm/{id}',[RhUserController::class, "deleteRhColaboratorConfirm"])->name('colaborators.rh.delete-confirm');
     
-    //confirm account route
-    Route::get('/confirm-account/{token}', [ConfirmAccountController::class, 'confirmAccount'])->name('confirm-account');
     
     });
    
