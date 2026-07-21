@@ -9,6 +9,7 @@ use App\Http\Controllers\ConfirmAccountController;
 route::middleware('guest')->group(function () {
    //confirm account route
     Route::get('/confirm-account/{token}', [ConfirmAccountController::class, 'confirmAccount'])->name('confirm-account');
+    Route::post('/confirm-account', [ConfirmAccountController::class, 'confirmAccountSubmit'])->name('confirm-account.submit');
 });
 Route::middleware('auth')->group(function () {
    Route::redirect('/', '/home');
