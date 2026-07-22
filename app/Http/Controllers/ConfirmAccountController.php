@@ -23,21 +23,27 @@ class ConfirmAccountController extends Controller
     public function confirmAccountSubmit(Request $request)
     {
         $request->validate([
-            'token' => 'required',
-            'password' => 'required|confirmed|min:8',
+            'token' => 'required|string|size:60',
+            'password' => 'required|confirmed|min:8|max:16|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         ]);
 
         $user = User::where('confirmation_token', $request->token)->first();
+        $user->password = bcrypt($request->password);
+        $user->confirmation_token = null;
+        $user->email_verified_at = now();
+        $user->save();
 
-        if (!$user) {
-            abort(403, 'Invalid confirmation token.');
-        }
+        return redirect()->route('login');
 
-        $user->update([
-            'password' => bcrypt($request->password),
-            'confirmation_token' => null,
-        ]);
+        // if (!$user) {
+        //     abort(403, 'Invalid confirmation token.');
+        // }
 
-        return redirect()->route('login')->with('status', 'Account confirmed successfully.');
+        // $user->update([
+        //     'password' => bcrypt($request->password),
+        //     'confirmation_token' => null,
+        // ]);
+
+        // return redirect()->route('login')->with('status', 'Account confirmed successfully.');
     }
 }
