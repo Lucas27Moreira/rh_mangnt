@@ -76,7 +76,7 @@ class RhUserController extends Controller
         ]);
 
         // send confirmation email
-        Mail::to($user->email)->send(new ConfirmAccountEmail(route('confirm-account',  $token)));
+        Mail::to($user->email)->send(new ConfirmAccountEmail(route('confirm-account', ['token' => $token])));
 
 
         // $user->password = Hash::make('password123');

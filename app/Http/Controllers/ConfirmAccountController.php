@@ -28,22 +28,16 @@ class ConfirmAccountController extends Controller
         ]);
 
         $user = User::where('confirmation_token', $request->token)->first();
+
+        if (!$user) {
+            abort(403, 'Invalid confirmation token.');
+        }
+
         $user->password = bcrypt($request->password);
         $user->confirmation_token = null;
         $user->email_verified_at = now();
         $user->save();
 
         return view('auth.welcome', compact('user'));
-
-        // if (!$user) {
-        //     abort(403, 'Invalid confirmation token.');
-        // }
-
-        // $user->update([
-        //     'password' => bcrypt($request->password),
-        //     'confirmation_token' => null,
-        // ]);
-
-        // return redirect()->route('login')->with('status', 'Account confirmed successfully.');
     }
 }

@@ -9,7 +9,7 @@
             <div class="card p-5 text-center">
                 <h1 class="text-center mb-4">Welcome {{$user->name}}</h1>
                 <p class="text-center">You have successfully registered!</p>
-                <p class="text-center">You can now <a href="{{ route('login') }}" class="btn btn-primary">login</a> to your account.</p>
+                <p class="text-center">You can now <a href="{{ route('login') }}">login</a> to your account.</p>
             </div>
         </div>
     </div>
