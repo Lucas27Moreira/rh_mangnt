@@ -15,12 +15,13 @@
         </div>
         <table class="table" id="table">
             <thead class="table-dark">
-                <th>Name</th>
+               <th>Name</th>
                 <th>Email</th>
+                <th>Active</th>
+                <th>Department</th>
                 <th>Role</th>
-                <th>Permissions</th>
                 <th>Admission Date</th>
-                <th>City</th>
+                <th>Salary</th>
                 <th></th>
             </thead>
             <tbody>
@@ -32,10 +33,17 @@
                 <tr>
                     <td>{{$colaborator->name}}</td>
                     <td>{{$colaborator->email}}</td>
+                    <td>
+                        @empty($colaborator->email_verified_at)
+                           <span class="badge bg-danger">Inactive</span>
+                        @else
+                            <span class="badge bg-success">Active</span>
+                        @endif
+                    </td>
+                    <td>{{$colaborator->department->name}}</td>
                     <td>{{$colaborator->role}}</td>
-                  <td>{{$colaborator->userDetail->salary}} $</td>
                     <td>{{$colaborator->userDetail->admission_date}}</td>
-                    <td>{{$colaborator->userDetail->city}}</td>
+                    <td>{{$colaborator->userDetail->salary}} $</td>
                     <td>
                         <div class="d-flex gap-3 justify-content-end">
                             <a href="{{ route('colaborators.rh.edit-colaborator', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
