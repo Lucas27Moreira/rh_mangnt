@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\RhUserController;
 use App\Http\Controllers\ConfirmAccountController;
+use App\Http\Controllers\ColaboratorsController;
 
 route::middleware('guest')->group(function () {
    //confirm account route
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/delete-colaborator/{id}',[RhUserController::class, "deleteRhColaborator"])->name('colaborators.rh.delete-colaborator');
     Route::post('/rh-users/delete-colaborator-confirm/{id}',[RhUserController::class, "deleteRhColaboratorConfirm"])->name('colaborators.rh.delete-confirm');
     
-    
+    //admin colaborators route
+    Route::get('/colaborators',[ColaboratorsController::class, "index"])->name('colaborators.all-colaborators');
     });
    
