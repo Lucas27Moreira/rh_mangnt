@@ -47,7 +47,7 @@
                     <td>
                         <div class="d-flex gap-3 justify-content-end">
                             <a href="{{ route('colaborators.details', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-darkm ms-3"> <i class="fas fa-eye me-2"></i>Details</a>
-                            <a href="#" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-trash-can me-2"></i>Delete</a>
+                            <a href="{{ route('colaborators.delete', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-darkm ms-3"><i class="fa-regular fa-trash-can me-2"></i>Delete</a>
                         </div>
                     </td>
                 </tr>
