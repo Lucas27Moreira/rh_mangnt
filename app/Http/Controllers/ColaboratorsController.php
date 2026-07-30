@@ -28,7 +28,14 @@ class ColaboratorsController extends Controller
         if (Auth::user()->id == $id) {
             return redirect()->route('home');
         }
-        $colaborator = User::with('userDetail', 'department')->where('id', $id)->first();
+        $colaborator = User::with('userDetail', 'department')
+                            ->where('id', $id)
+                            ->first();
+
+                            //check if colaborator is null
+        if (!$colaborator) {
+            abort(404, 'Colaborator not found');
+        }
         return view('colaborators.show-details')->with('colaborator', $colaborator);
     }
 
