@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\RhUserController;
 use App\Http\Controllers\ConfirmAccountController;
 use App\Http\Controllers\ColaboratorsController;
+use App\Http\Controllers\RhManagementController;
 
 route::middleware('guest')->group(function () {
    //confirm account route
@@ -14,11 +15,20 @@ route::middleware('guest')->group(function () {
 });
 Route::middleware('auth')->group(function () {
    Route::redirect('/', '/home');
-   Route::view('/home', 'home')->name('home');
+   Route::get('/home', function () {
+      // check if user is admin or rh
+      if (auth()->user()->role === 'admin') {
+         return redirect()->route('colaborators.all-colaborators');
+      } elseif (auth()->user()->role === 'rh') {
+         return redirect()->route('rh-management.home');
+      } else {
+         return redirect()->route('user.profile');
+      }
+    })->name('home');
 
    //user profile page
-   Route::get('/user/profile',[ProfileController::class, "index"])->name('user.profile');
-   Route::post('/user/profile/update-password',[ProfileController::class, "updatePassword"])->name('user.profile.update-password');
+    Route::get('/user/profile',[ProfileController::class, "index"])->name('user.profile');
+    Route::post('/user/profile/update-password',[ProfileController::class, "updatePassword"])->name('user.profile.update-password');
     Route::post('/user/profile/update-user-data',[ProfileController::class, "updateUserData"])->name('user.profile.update-user-data');
 
     //departments route
@@ -42,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/delete-colaborator-confirm/{id}',[RhUserController::class, "deleteRhColaboratorConfirm"])->name('colaborators.rh.delete-confirm');
     Route::get('/rh-users/restore/{id}',[RhUserController::class, "restoreRhColaborator"])->name('colaborators.rh.restore');
 
+    Route::get('/rh-users/management/home',[RhManagementController::class, "home"])->name('rh-management.home');
 
     //admin colaborators route
     Route::get('/colaborators',[ColaboratorsController::class, "index"])->name('colaborators.all-colaborators');
