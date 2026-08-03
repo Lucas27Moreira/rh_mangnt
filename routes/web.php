@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/restore/{id}',[RhUserController::class, "restoreRhColaborator"])->name('colaborators.rh.restore');
 
     Route::get('/rh-users/management/home',[RhManagementController::class, "home"])->name('rh-management.home');
-
+     Route::get('/rh-users/management/new-colaborator',[RhManagementController::class, "newColaborator"])->name('rh.management.new-colaborator');
     //admin colaborators route
     Route::get('/colaborators',[ColaboratorsController::class, "index"])->name('colaborators.all-colaborators');
     Route::get('/colaborators/details/{id}',[ColaboratorsController::class, "showDetails"])->name('colaborators.details');

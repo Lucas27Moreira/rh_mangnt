@@ -11,6 +11,7 @@
 
          <div class="text-center my-5">
             <p>No collaborators found.</p>
+            <a href="{{ route('rh.management.new-colaborator') }}" class="btn btn-primary">Create a new collaborator</a>
         </div>
         @else
         <table class="table" id="table">
