@@ -7,6 +7,7 @@ use App\Http\Controllers\RhUserController;
 use App\Http\Controllers\ConfirmAccountController;
 use App\Http\Controllers\ColaboratorsController;
 use App\Http\Controllers\RhManagementController;
+use App\Http\Controllers\AdminController;
 
 route::middleware('guest')->group(function () {
    //confirm account route
@@ -18,7 +19,7 @@ Route::middleware('auth')->group(function () {
    Route::get('/home', function () {
       // check if user is admin or rh
       if (auth()->user()->role === 'admin') {
-         return redirect()->route('colaborators.all-colaborators');
+         return redirect()->route('admin.home');
       } elseif (auth()->user()->role === 'rh') {
          return redirect()->route('rh-management.home');
       } else {
@@ -60,6 +61,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/colaborators/delete/{id}',[ColaboratorsController::class, "deleteColaborator"])->name('colaborators.delete');
     Route::get('/colaborators/delete-confirm/{id}',[ColaboratorsController::class, "deleteColaboratorConfirm"])->name('colaborators.delete-confirm');
     Route::get('/colaborators/restore/{id}',[ColaboratorsController::class, "restoreColaborator"])->name('colaborators.restore');
-   
+    
+
+    //admin home route
+    Route::get('/admin/home',[AdminController::class, "home"])->name('admin.home');
+    
     });
    
